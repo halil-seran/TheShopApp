@@ -48,6 +48,30 @@ const PRODUCTS = [
     'https://cdn.pixabay.com/photo/2015/10/03/02/14/pen-969298_1280.jpg',
     "Can be used for role-playing (not the kind of role-playing you're thinking about...).",
     5.49
+  ),
+  new Product(
+    'p7',
+    'u3',
+    'Lorem ipsum dolor sit amet',
+    'https://1.bp.blogspot.com/-2l2vGj3L3L8/YMYjO56VOBI/AAAAAAAAAiM/iRCpPl_OQukgyYaNOqwiAXoDBFRSXZOawCLcBGAsYHQ/s16000/lorem%2Bipsum.jpg',
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras laoreet eu sapien non vulputate. Aliquam erat volutpat. Phasellus sagittis elit orci, a vestibulum nulla congue eu. Praesent ornare urna a nibh iaculis efficitur. Phasellus enim nulla, suscipit sit amet pellentesque efficitur, consequat ut dui. Vestibulum nec scelerisque nunc. Ut id consequat diam. Fusce condimentum magna rhoncus aliquet egestas. Nulla ut cursus erat. Curabitur et venenatis nibh",
+    7500.99
+  ),
+  new Product(
+    'p8',
+    'u3',
+    'Lorem ipsum dolor sit amet',
+    'https://ursd.org/wp-content/uploads/2020/12/1.png',
+    'Etiam orci lacus, porttitor nec mi ac, rhoncus pharetra felis. Mauris malesuada pharetra lorem nec ornare. Donec purus nunc, maximus nec nisi sit amet, ultricies porta purus. Donec vel neque ac erat pulvinar vestibulum. Morbi tristique libero venenatis ex fermentum pellentesque. Nullam cursus orci nec tortor tincidunt, eget ultrices orci imperdiet. Sed ac accumsan nibh. Duis efficitur lectus eros, eu pharetra justo lobortis vitae. Sed varius tellus non aliquam vulputate. Proin porta lacus enim. Phasellus ac ipsum odio.',
+    1600.99
+  ),
+  new Product(
+    'p9',
+    'u1',
+    'Lorem ipsum dolor sit amet',
+    'https://www.webtekno.com/images/editor/default/0003/28/ea18cca4193e9d8342d722a9d80569f89a6885cb.jpeg',
+    "Nullam porttitor ut diam eget iaculis. Duis cursus sapien et lacinia dignissim. Morbi blandit enim dictum pulvinar consequat. Etiam sollicitudin semper justo, in volutpat elit pretium a. Vestibulum ac bibendum neque. Integer fermentum neque pharetra venenatis bibendum. Praesent id ex eget quam rutrum fringilla. Suspendisse lacus ligula, dapibus quis porttitor id, imperdiet vitae tortor. Proin rhoncus risus id tortor molestie ultrices. Morbi finibus magna ac justo luctus, in aliquet nulla molestie. Integer posuere quam a nisi feugiat ornare. Morbi ultrices urna mauris, ac port",
+    500.99
   )
 ];
 

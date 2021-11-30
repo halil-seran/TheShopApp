@@ -1,0 +1,19 @@
+stack navigation  'react-navigation-stack' e taşındı hatası 
+'react-navigation-stack' dan importladıkladıktan sonra 
+
+npm install react-navigation react-navigation-stack --save
+
+expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+app loading ve font ayarlayamama hatası için 
+
+import * as Font from 'expo-font';
+import AppLoading from 'expo-app-loading';
+//bu 2sini birlikte importlayıp terminale npm install --save expo-font yazıyoruz (fontun çalışması için)
+//sonra expo install expo-app-loading yazıyoruz (apploading çalışması için) 
+//son olarak npm install yazıyoruz (son hatayı düzeltiyoruz, eksik birkaç dosyayı yüklüyor)
+onError={(err) => console.log(err)}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
