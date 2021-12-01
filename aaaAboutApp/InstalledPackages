@@ -11,3 +11,7 @@ npm install --save expo-font
 expo install expo-app-loading
 
 npm install
+
+npm install --save @expo/vector-icons
+
+npm i --save @react-navigation/native
