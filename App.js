@@ -10,12 +10,14 @@ import AppLoading from 'expo-app-loading';
 import productsReducer from './store/reducers/products';
 import ShopNavigator from './navigation/ShopNavigator';
 import cartReducer from './store/reducers/cart';
+import ordersReducer from './store/reducers/orders';
 
 //import { composeWithDevTools } from 'redux-devtools-extension'; //for reactnative debugger tool
 
 const rootReducer = combineReducers({
   products: productsReducer,
-  cart: cartReducer
+  cart: cartReducer,
+  orders: ordersReducer
 });
 
 const store = createStore(rootReducer/*, composeWithDevTools()*/); // for reactnative debugger tool

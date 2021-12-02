@@ -27,3 +27,21 @@ Try to add npm i --save @react-navigation/native
 bir file i yada function componenti yada componentı importlarken curly bracketsa almadan importla
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+And also for DrawerNavigator problem
+npm install --save react-navigation-drawer
+import { createDrawerNavigator } from 'react-navigation-drawer';
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+interpolate is not a function. (In 'interpolate(this.progress, {
+              inputRange: [PROGRESS_EPSILON, 1],
+              outputRange: [0, 1]
+            })', 'interpolate' is undefined)
+
+npm uninstall react-native-reanimated
+npm install --save react-native-reanimated@1.13.1
+expo start --clear
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
