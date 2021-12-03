@@ -26,10 +26,10 @@ const CartScreen = props => {
         <View style={styles.screen}>
             <View style={styles.summary}>
                 <Text style={styles.summaryText}>
-                    Total: <Text style={styles.amount}>₺{cartTotalAmount.toFixed(2)}</Text>
+                    Total:  <Text style={styles.amount}>{Math.round(cartTotalAmount.toFixed(2) * 100) / 100}₺</Text> 
                 </Text>
                 <Button
-                    color='#253237'
+                    color='#253237'                                //sonuç bazen -0 çıkıyor/ fixlemek için 100 le çarpıp 100e bölüyoruz
                     title="Order Now"
                     disabled={cartItems.length === 0}
                     onPress={() => {
@@ -40,14 +40,16 @@ const CartScreen = props => {
             <FlatList
                 data={cartItems}
                 keyExtractor={item => item.productId}
-                renderItem={itemData => (<CartItem
-                    quantity={itemData.item.quantity}
-                    title={itemData.item.productTitle}
-                    amount={itemData.item.sum}
-                    onRemove={() => {
-                        dispatch(cartActions.removeFromCart(itemData.item.productId));
-                    }}
-                />
+                renderItem={itemData => (
+                    <CartItem
+                        quantity={itemData.item.quantity}
+                        title={itemData.item.productTitle}
+                        amount={itemData.item.sum}
+                        deletable
+                        onRemove={() => {
+                            dispatch(cartActions.removeFromCart(itemData.item.productId));
+                        }}
+                    />
                 )}
             />
 
@@ -56,7 +58,7 @@ const CartScreen = props => {
 };
 
 CartScreen.navigationOptions = {
-    headerTitle:'Your Cart'
+    headerTitle: 'Your Cart'
 };
 
 const styles = StyleSheet.create({
@@ -82,7 +84,8 @@ const styles = StyleSheet.create({
         fontSize: 18
     },
     amount: {
-        color: '#253237'
+        color: '#253237',
+        fontSize: 21
     }
 });
 

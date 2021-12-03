@@ -15,3 +15,6 @@ npm install
 npm install --save @expo/vector-icons
 
 npm i --save @react-navigation/native
+
+npm install --save moment  || 2 platform içinde benzer tarih görünümü için
+ 
