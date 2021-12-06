@@ -2,10 +2,11 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
+import ReduxThunk from 'redux-thunk';
 
 import productsReducer from './store/reducers/products';
 import ShopNavigator from './navigation/ShopNavigator';
@@ -20,7 +21,7 @@ const rootReducer = combineReducers({
   orders: ordersReducer
 });
 
-const store = createStore(rootReducer/*, composeWithDevTools()*/); // for reactnative debugger tool
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk) /*, composeWithDevTools()*/); // for reactnative debugger tool
 
 const fetchFonts = () => {
   return Font.loadAsync({

@@ -18,3 +18,4 @@ npm i --save @react-navigation/native
 
 npm install --save moment  || 2 platform içinde benzer tarih görünümü için
  
+npm install --save redux-thunk || database için

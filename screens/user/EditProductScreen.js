@@ -1,5 +1,5 @@
-import React, { useEffect, useCallback, useReducer } from "react";
-import { View, ScrollView, StyleSheet, Platform, Alert, KeyboardAvoidingView } from "react-native";
+import React, { useState, useEffect, useCallback, useReducer } from "react";
+import { View, ScrollView, StyleSheet, Platform, Alert, KeyboardAvoidingView, ActivityIndicator } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../../components/UI/HeaderButton";
 import { useSelector, useDispatch } from "react-redux";
@@ -32,6 +32,8 @@ const formReducer = (state, action) => {
 };
 
 const EditProductScreen = props => {
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState();
 
     const prodId = props.navigation.getParam('productId');
     const editedProduct = useSelector(state =>
@@ -55,31 +57,46 @@ const EditProductScreen = props => {
         formIsValid: editedProduct ? true : false
     });
 
-    const submitHandler = useCallback(() => {
+    useEffect(() => {
+        if (error) {
+            Alert.alert('An Error Occurred!', error, [{ text: 'OKAY' }]);
+        }
+    }, [error]);
+
+    const submitHandler = useCallback(async () => {
         if (!formState.formIsValid) {
             Alert.alert('Wrong input!', 'Please check the errors in the form.', [{ text: 'Okay' }]);
             return;
         }
-        if (editedProduct) {
-            dispatch(
-                productsActions.updateProduct(
-                    prodId,
-                    formState.inputValues.title,
-                    formState.inputValues.description,
-                    formState.inputValues.imageUrl
-                )
-            );
-        } else {
-            dispatch(
-                productsActions.createProduct(
-                    formState.inputValues.title,
-                    formState.inputValues.description,
-                    formState.inputValues.imageUrl,
-                    +formState.inputValues.price   //data string olarak çekiyoruz ama price sayı old. için hata veriyordu bu şekilde çözdük
-                )
-            );
+        setError(null);
+        setIsLoading(true);
+        try {
+            if (editedProduct) {
+                await dispatch(
+                    productsActions.updateProduct(
+                        prodId,
+                        formState.inputValues.title,
+                        formState.inputValues.description,
+                        formState.inputValues.imageUrl
+                    )
+                );
+            } else {
+                await dispatch(
+                    productsActions.createProduct(
+                        formState.inputValues.title,
+                        formState.inputValues.description,
+                        formState.inputValues.imageUrl,
+                        +formState.inputValues.price   //data string olarak çekiyoruz ama price sayı old. için hata veriyordu bu şekilde çözdük
+                    )
+                );
+            }
+            props.navigation.goBack();
+        } catch (err) {
+            setError(err.message);
         }
-        props.navigation.goBack();   // navigation.navigate('UserProducts');
+
+        setIsLoading(false);
+        //props.navigation.goBack();   // navigation.navigate('UserProducts');  /5 satır yukarı taşıdım çünkü error varsa hata versin goBacke gitmesin
     }, [dispatch, prodId, formState]);
 
     useEffect(() => {
@@ -95,8 +112,16 @@ const EditProductScreen = props => {
         });
     }, [dispatchFormState]);
 
+    if (isLoading) {
+        return (
+            <View style={styles.centered} >
+                <ActivityIndicator size='large' color='#253237' />
+            </View>
+        );
+    }
+
     return (
-        <KeyboardAvoidingView style={{flex:1}} behavior="padding" keyboardVerticalOffset={90} >
+        <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" keyboardVerticalOffset={90} >
             <ScrollView>
                 <View style={styles.form}>
                     <Input
@@ -178,6 +203,11 @@ EditProductScreen.navigationOptions = navData => {
 const styles = StyleSheet.create({
     form: {
         margin: 20
+    },
+    centered: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });
 
