@@ -4,7 +4,7 @@ import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../../components/UI/HeaderButton";
 import { useSelector, useDispatch } from "react-redux";
 import * as productsActions from '../../store/actions/products';
-import Input from "../../components/UI/Input";
+import InputUi from "../../components/UI/InputUi";
 
 const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE';
 
@@ -124,7 +124,7 @@ const EditProductScreen = props => {
         <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" keyboardVerticalOffset={90} >
             <ScrollView>
                 <View style={styles.form}>
-                    <Input
+                    <InputUi
                         id='title'
                         label='Title'
                         errorText='Please enter a valid title!'
@@ -137,7 +137,7 @@ const EditProductScreen = props => {
                         initiallyValid={!!editedProduct}
                         required
                     />
-                    <Input
+                    <InputUi
                         id='imageUrl'
                         label='Image URL'
                         errorText='Please enter a valid image url!'
@@ -149,7 +149,7 @@ const EditProductScreen = props => {
                         required
                     />
                     {editedProduct ? null : (
-                        <Input
+                        <InputUi
                             id='price'
                             label='Price'
                             errorText='Please enter a valid price!'
@@ -160,7 +160,7 @@ const EditProductScreen = props => {
                             min={0.01}
                         />
                     )}
-                    <Input
+                    <InputUi
                         id='description'
                         label='Description'
                         errorText='Please enter a valid description!'

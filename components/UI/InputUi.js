@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1
     },
     errorContainer:{
-        marginVertical: 5
+        marginVertical: 3
     },
     errorText:{
         fontFamily:'open-sans',

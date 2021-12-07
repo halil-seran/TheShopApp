@@ -51,3 +51,14 @@ import * as moment from 'moment' yerine import moment from 'moment'
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+Setting a timer for a long period of time, i.e. multiple minutes, is a performance and correctness issue on Android
+android de auto logout yaparken süre hesaplamada android hata veriyor 
+çözüm Go to node_modules/react-native/Libraries/Core/Timer/JSTimers.js
+
+Look for the variable MAX_TIMER_DURATION_MS
+
+Change 60 * 1000 to 10000 * 1000 , needed for firebase
+
+bu şekilde çözülüyor ama hala optimum bir çözümü yok
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

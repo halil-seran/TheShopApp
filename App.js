@@ -12,13 +12,16 @@ import productsReducer from './store/reducers/products';
 import ShopNavigator from './navigation/ShopNavigator';
 import cartReducer from './store/reducers/cart';
 import ordersReducer from './store/reducers/orders';
+import authReducer from './store/reducers/auth';
+import NavigationContainer from './navigation/NavigationContainer';
 
 //import { composeWithDevTools } from 'redux-devtools-extension'; //for reactnative debugger tool
 
 const rootReducer = combineReducers({
   products: productsReducer,
   cart: cartReducer,
-  orders: ordersReducer
+  orders: ordersReducer,
+  auth: authReducer 
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk) /*, composeWithDevTools()*/); // for reactnative debugger tool
@@ -46,8 +49,8 @@ export default function App() {
 }
 return (
   <Provider store={store} >
-    <ShopNavigator />
-    <StatusBar style='light' /* hidden={true} */ />
+    <NavigationContainer />
+    <StatusBar style='light' hidden={true}  />
   </Provider>
 
 );

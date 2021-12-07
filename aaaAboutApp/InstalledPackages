@@ -19,3 +19,10 @@ npm i --save @react-navigation/native
 npm install --save moment  || 2 platform içinde benzer tarih görünümü için
  
 npm install --save redux-thunk || database için
+
+npm install --save expo-linear-gradient
+
+npm install react-native-input-style --save
+
+expo install @react-native-async-storage/async-storage
+
