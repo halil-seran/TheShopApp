@@ -85,8 +85,10 @@ export const createProduct = (title, description, imageUrl, price) => {
                 ownerId: userId
             })
         });
+        
 
         const resData = await response.json();
+        
 
 
         dispatch({
@@ -97,7 +99,7 @@ export const createProduct = (title, description, imageUrl, price) => {
                 description: description,
                 imageUrl, //js 'le ayniysa bu şekilde de yazılabiliyor
                 price,
-                ownerId
+                ownerId: userId
             }
         });
     };
