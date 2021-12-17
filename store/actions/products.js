@@ -1,5 +1,7 @@
 import { useDispatch } from "react-redux";
 import Product from '../../models/product';
+import * as Notifications from 'expo-notifications';
+import * as Permissions from 'expo-permissions';
 
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 export const CREATE_PRODUCT = 'CREATE_PRODUCT';
@@ -27,6 +29,7 @@ export const fetchProducts = () => {
                     new Product(
                         key,
                         resData[key].ownerId,
+                        resData[key].ownerPushToken,
                         resData[key].title,
                         resData[key].imageUrl,
                         resData[key].description,
@@ -68,8 +71,20 @@ export const deleteProduct = productId => {
 };
 
 export const createProduct = (title, description, imageUrl, price) => {
+
     return async (dispatch, getState) => {
         //any async code you want
+        let pushToken;
+        let statusObj = await Notifications.getPermissionsAsync(Permissions.NOTIFICATIONS);                      //Permissions.getAsync()
+        if (statusObj.status !== 'granted') {
+            statusObj = await Notifications.getPermissionsAsync(Permissions.NOTIFICATIONS);                     //Permissions.getAsync()
+        }
+        if (statusObj.status !== 'granted') {
+            pushToken = null;
+        } else {
+            pushToken = (await Notifications.getExpoPushTokenAsync()).data;
+        }
+
         const token = getState().auth.token;
         const userId = getState().auth.userId;
         const response = await fetch(`https://rn-database-9b245-default-rtdb.europe-west1.firebasedatabase.app/products.json?auth=${token}`, {   // products.json bu sadece firebase için spesific birşey
@@ -82,13 +97,14 @@ export const createProduct = (title, description, imageUrl, price) => {
                 description,
                 imageUrl,
                 price,
-                ownerId: userId
-            })
+                ownerId: userId,
+                ownerPushToken: pushToken,
+            }),
         });
-        
+
 
         const resData = await response.json();
-        
+
 
 
         dispatch({
@@ -99,8 +115,9 @@ export const createProduct = (title, description, imageUrl, price) => {
                 description: description,
                 imageUrl, //js 'le ayniysa bu şekilde de yazılabiliyor
                 price,
-                ownerId: userId
-            }
+                ownerId: userId,
+                pushToken: pushToken,
+            },
         });
     };
 };

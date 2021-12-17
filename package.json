@@ -36,7 +36,9 @@
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
-    "@react-native-async-storage/async-storage": "~1.15.0"
+    "@react-native-async-storage/async-storage": "~1.15.0",
+    "expo-notifications": "~0.13.3",
+    "expo-permissions": "~13.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

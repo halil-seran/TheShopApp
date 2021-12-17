@@ -82,7 +82,7 @@ const AuthScreen = props => {
             setError(err.message);
             setIsLoading(false);
         }
-        
+
     };
 
 
@@ -98,59 +98,61 @@ const AuthScreen = props => {
     );
 
     return (
-        <KeyboardAvoidingView behavior='height' keyboardVerticalOffset={20} style={styles.screen} >
-            <LinearGradient colors={['#C2AFF0', '#9191E9', '#457EAC', '#2D5D7B']} style={styles.gradient} >
-                <Card style={styles.authContainer} >
-                    <ScrollView>
-                        <Input
-                            id="email"
-                            label="E-Mail"
-                            keyboardType="email-address"
-                            required
-                            email
-                            autoCapitalize="none"
-                            errorText="Please enter a valid email!"
-                            onInputChange={inputChangeHandler}
-                            initialValue=""
-                            outlined
-                            borderColor="blue"
-                        />
-                        <Input
-                            id="password"
-                            label="Password"
-                            keyboardType="default"
-                            secureTextEntry
-                            required
-                            minLength={5}
-                            email
-                            autoCapitalize="none"
-                            errorText="Please enter a valid password!"
-                            onInputChange={inputChangeHandler}
-                            initialValue=""
-                            outlined
-                            borderColor="blue"
-                        />
-                        <View style={{ alignItems: 'center' }}>
-                            <View style={styles.buttonContainer}>
-                                {isLoading ?
-                                    (<ActivityIndicator size='small' color='red' />) :
-                                    (<Button title={isSignup ? 'Sign Up' : "Log In"} color='#212227' onPress={authHandler} />)
-                                }
+        <View style={{flex:1}}>
+            <KeyboardAvoidingView behavior='padding' keyboardVerticalOffset={-400} style={styles.screen} >
+                <LinearGradient colors={['#C2AFF0', '#9191E9', '#457EAC', '#2D5D7B']} style={styles.gradient} >
+                    <Card style={styles.authContainer} >
+                        <ScrollView>
+                            <Input
+                                id="email"
+                                label="E-Mail"
+                                keyboardType="email-address"
+                                required
+                                email
+                                autoCapitalize="none"
+                                errorText="Please enter a valid email!"
+                                onInputChange={inputChangeHandler}
+                                initialValue=""
+                                outlined
+                                borderColor="blue"
+                            />
+                            <Input
+                                id="password"
+                                label="Password"
+                                keyboardType="default"
+                                secureTextEntry
+                                required
+                                minLength={5}
+                                email
+                                autoCapitalize="none"
+                                errorText="Please enter a valid password!"
+                                onInputChange={inputChangeHandler}
+                                initialValue=""
+                                outlined
+                                borderColor="blue"
+                            />
+                            <View style={{ alignItems: 'center' }}>
+                                <View style={styles.buttonContainer}>
+                                    {isLoading ?
+                                        (<ActivityIndicator size='small' color='red' />) :
+                                        (<Button title={isSignup ? 'Sign Up' : "Log In"} color='#212227' onPress={authHandler} />)
+                                    }
+                                </View>
+                                <View style={styles.buttonContainer}>
+                                    <Button
+                                        title={`Switch to ${isSignup ? 'Log In' : 'Sign Up'}`}
+                                        color='#91AEC1'
+                                        onPress={() => {
+                                            setIsSignup(prevState => !prevState);
+                                        }}
+                                    />
+                                </View>
                             </View>
-                            <View style={styles.buttonContainer}>
-                                <Button
-                                    title={`Switch to ${isSignup ? 'Log In' : 'Sign Up'}`}
-                                    color='#91AEC1'
-                                    onPress={() => {
-                                        setIsSignup(prevState => !prevState);
-                                    }}
-                                />
-                            </View>
-                        </View>
-                    </ScrollView>
-                </Card>
-            </LinearGradient>
-        </KeyboardAvoidingView>
+                        </ScrollView>
+                    </Card>
+                </LinearGradient>
+            </KeyboardAvoidingView>
+        </View>
     );
 
 };

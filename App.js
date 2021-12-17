@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import ReduxThunk from 'redux-thunk';
+import * as Notifications from 'expo-notifications';
 
 import productsReducer from './store/reducers/products';
 import ShopNavigator from './navigation/ShopNavigator';
@@ -17,11 +18,17 @@ import NavigationContainer from './navigation/NavigationContainer';
 
 //import { composeWithDevTools } from 'redux-devtools-extension'; //for reactnative debugger tool
 
+Notifications.setNotificationHandler({
+  handleNotification: async () => {
+    return { shouldShowAlert: true };
+  },
+});
+
 const rootReducer = combineReducers({
   products: productsReducer,
   cart: cartReducer,
   orders: ordersReducer,
-  auth: authReducer 
+  auth: authReducer
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk) /*, composeWithDevTools()*/); // for reactnative debugger tool
@@ -44,16 +51,16 @@ export default function App() {
       <AppLoading startAsync={fetchFonts} onFinish={() => {
         setFontLoaded(true);
       }}
-      onError={(err) => console.log(err)} />
+        onError={(err) => console.log(err)} />
     );
-}
-return (
-  <Provider store={store} >
-    <NavigationContainer />
-    <StatusBar style='light' hidden={true}  />
-  </Provider>
+  }
+  return (
+    <Provider store={store} >
+      <NavigationContainer />
+      <StatusBar style='light' hidden={true} />
+    </Provider>
 
-);
+  );
 }
 
 const styles = StyleSheet.create({
