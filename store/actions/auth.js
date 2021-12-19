@@ -51,7 +51,7 @@ export const signup = (email, password) => {
 
 export const login = (email, password) => {
     return async dispatch => {
-        const response = await fetch(
+        const response = await fetch(                                                 //AIzaSyCuAbXnXF5fy7hOstCLrYXWJeVpfsKk7Gk
             'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCuAbXnXF5fy7hOstCLrYXWJeVpfsKk7Gk'    //this is firebase sign in endpoint http request link //apikeyi project settings web api keyden aldık
             , {
                 method: 'POST',

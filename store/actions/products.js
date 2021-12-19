@@ -80,9 +80,9 @@ export const createProduct = (title, description, imageUrl, price) => {
             statusObj = await Notifications.getPermissionsAsync(Permissions.NOTIFICATIONS);                     //Permissions.getAsync()
         }
         if (statusObj.status !== 'granted') {
-            pushToken = null;
+            pushToken = null;      //null
         } else {
-            pushToken = (await Notifications.getExpoPushTokenAsync()).data;
+            pushToken = (await Notifications.getDevicePushTokenAsync()).data;     //getExpoPushTokenAsync
         }
 
         const token = getState().auth.token;

@@ -2,7 +2,7 @@
   "expo": {
     "name": "Shop App",
     "slug": "TheShopApp",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./assets/squareicon.png",
     "splash": {
@@ -17,13 +17,14 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.halilseran.TheShopAppV2",
-      "buildNumber": "1.0.1",
+      "bundleIdentifier": "com.halilseran.TheShopAppV4",
+      "buildNumber": "1.0.3",
       "supportsTablet": true
     },
     "android": {
-      "package": "com.halilseran.TheShopAppV2",
-      "versionCode": 2,
+      "package": "com.halilseran.TheShopAppV4",
+      "versionCode": 4,
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/shopIcon.png",
         "backgroundColor": "#033C67"
