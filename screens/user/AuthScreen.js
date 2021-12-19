@@ -98,7 +98,7 @@ const AuthScreen = props => {
     );
 
     return (
-        <View style={{flex:1}}>
+        <View style={{ flex: 1 }}>
             <KeyboardAvoidingView behavior='padding' keyboardVerticalOffset={-400} style={styles.screen} >
                 <LinearGradient colors={['#C2AFF0', '#9191E9', '#457EAC', '#2D5D7B']} style={styles.gradient} >
                     <Card style={styles.authContainer} >

@@ -34,16 +34,16 @@ const CartScreen = props => {
     return (
         <View style={styles.screen}>
             <View style={styles.summary}>
-                <Text style={styles.summaryText}> 
+                <Text style={styles.summaryText}>
                     Total:  <Text style={styles.amount}>{Math.round(cartTotalAmount.toFixed(2) * 100) / 100}₺</Text>
-                </Text>                              
+                </Text>
                 {isLoading ? <ActivityIndicator size='small' color='red' /> :                   //sonuç bazen -0 çıkıyor/ fixlemek için 100 le çarpıp 100e bölüyoruz
-                <Button      
-                    color='#253237'
-                    title="Order Now"
-                    disabled={cartItems.length === 0}
-                    onPress={sendOrderHandler}
-                />
+                    <Button
+                        color='#253237'
+                        title="Order Now"
+                        disabled={cartItems.length === 0}
+                        onPress={sendOrderHandler}
+                    />
                 }
             </View>
             <FlatList

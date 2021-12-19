@@ -71,11 +71,11 @@ const styles = StyleSheet.create({
     button: {
         margin: 4,
         marginRight: 7,
-        width:120
+        width: 120
     },
     detailItems: {
         width: 360,
-        marginVertical:5
+        marginVertical: 5
     }
 });
 

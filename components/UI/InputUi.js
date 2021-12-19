@@ -100,12 +100,12 @@ const styles = StyleSheet.create({
         borderBottomColor: '#ccc',
         borderBottomWidth: 1
     },
-    errorContainer:{
+    errorContainer: {
         marginVertical: 3
     },
-    errorText:{
-        fontFamily:'open-sans',
-        color:'red',
+    errorText: {
+        fontFamily: 'open-sans',
+        color: 'red',
         fontSize: 14
     }
 });

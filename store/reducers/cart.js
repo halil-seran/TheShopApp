@@ -48,7 +48,9 @@ export default (state = initialState, action) => {
                     selectedCartItem.quantity - 1,
                     selectedCartItem.productPrice,
                     selectedCartItem.productTitle,
-                    selectedCartItem.sum - selectedCartItem.productPrice
+                    selectedCartItem.pushToken,
+                    selectedCartItem.sum - selectedCartItem.productPrice,
+
                 );
                 updatedCartItems = { ...state.items, [action.pid]: updatedCartItem };
             } else {
