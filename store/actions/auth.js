@@ -17,7 +17,7 @@ export const authenticate = (userId, token, expiryTime) => {
 export const signup = (email, password) => {
     return async dispatch => {
         const response = await fetch(
-            'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCuAbXnXF5fy7hOstCLrYXWJeVpfsKk7Gk'    //this is firebase signup endpoint http request link //apikeyi project settings web api keyden aldık
+            'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=<YOUR-API-KEY>'    //this is firebase signup endpoint http request link //apikeyi project settings web api keyden aldık
             , {
                 method: 'POST',
                 headers: {
@@ -52,7 +52,7 @@ export const signup = (email, password) => {
 export const login = (email, password) => {
     return async dispatch => {
         const response = await fetch(                                                 //AIzaSyCuAbXnXF5fy7hOstCLrYXWJeVpfsKk7Gk
-            'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCuAbXnXF5fy7hOstCLrYXWJeVpfsKk7Gk'    //this is firebase sign in endpoint http request link //apikeyi project settings web api keyden aldık
+            'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=<YOUR-API-KEY>'    //this is firebase sign in endpoint http request link //apikeyi project settings web api keyden aldık
             , {
                 method: 'POST',
                 headers: {
