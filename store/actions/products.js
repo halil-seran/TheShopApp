@@ -82,7 +82,7 @@ export const createProduct = (title, description, imageUrl, price) => {
         if (statusObj.status !== 'granted') {
             pushToken = null;      //null
         } else {
-            pushToken = (await Notifications.getDevicePushTokenAsync()).data;     //getExpoPushTokenAsync
+            pushToken = (await Notifications.getExpoPushTokenAsync()).data;     //getExpoPushTokenAsync  getDevicePushTokenAsync
         }
 
         const token = getState().auth.token;
